@@ -14,6 +14,6 @@ namespace ExamPIIT.Data
 
         }
         public DbSet<Coin> Coins { get; set; }
-        public DbSet<Market> Mar { get; set; }
+        public DbSet<Market> Markets { get; set; }
     }
 }

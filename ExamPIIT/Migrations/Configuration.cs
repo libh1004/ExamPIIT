@@ -1,6 +1,8 @@
 namespace ExamPIIT.Migrations
 {
+    using ExamPIIT.Models;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -14,18 +16,21 @@ namespace ExamPIIT.Migrations
 
         protected override void Seed(ExamPIIT.Data.MyDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            var markets = new List<Market>
+            {
+                new Market{Name = "Binance", Description = "", Status = StatusValue.Active},
+                new Market{Name = "Coinbase Exchange", Description = "", Status = StatusValue.Deactive},
+                new Market{Name = "FTX", Description = "", Status = StatusValue.Active},
+                new Market{Name = "OKX", Description = "", Status = StatusValue.Deactive},
+                new Market{Name = "Upbit", Description = "", Status = StatusValue.Deactive},
+                new Market{Name = "WhiteBIT", Description = "", Status = StatusValue.Active},
+                new Market{Name = "Korbit", Description = "", Status = StatusValue.Active},
+                new Market{Name = "BitMart", Description = "", Status = StatusValue.Active},
+                new Market{Name = "Deepcoin", Description = "", Status = StatusValue.Deactive},
+                new Market{Name = "Bitbank", Description = "", Status = StatusValue.Deactive},
+            };
+            markets.ForEach(m => context.Markets.Add(m));
+            context.SaveChanges();
         }
     }
 }
